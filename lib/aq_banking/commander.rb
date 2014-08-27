@@ -14,17 +14,25 @@ module AqBanking
     end
 
 
+    def self.dump_command(str)
+      puts "[EXECUTING] #{str}"
+    end
+
     def self.list_balance
+      dump_command(self.list_balance_cmd)
       system(self.list_balance_cmd)
     end
 
     def self.request_balance(account)
+      dump_command(self.request_balance_cmd(account))
       system(self.request_balance_cmd(account))
     end
     def self.request_transactions(account,from=nil,to=nil)
+      dump_command(self.request_transactions_cmd(account,from,to))
       system(self.request_transactions_cmd(account,from,to))
     end
     def self.process_csv(account)
+      dump_command(self.process_csv_cmd(account))
       system(self.process_csv_cmd(account))
     end
 
